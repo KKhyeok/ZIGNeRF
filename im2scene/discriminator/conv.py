@@ -193,40 +193,6 @@ class DiscriminatorResnetCond(nn.Module):
         out = self.fc(out)
         return out
 
-'''
-class Identifier(nn.Module):
-    def __init__(self, img_size, z_dim=128, z_dim_bg = 128, size_h = 16,size_max = 512, size_max_bg = 256, batch_size = 32):
-        super().__init__()
-        self.z_dim = z_dim
-        self.z_dim_bg = z_dim_bg
-        self.batch_size = batch_size
-        self.encoder_shape_obj = ImgEncoderwoSN(img_size, size_max, size_h = size_h, size_max = size_max)
-        self.encoder_app_obj = ImgEncoderwoSN(img_size, size_max, size_h = size_h, size_max = size_max)
-        self.encoder_shape_bg = ImgEncoderwoSN(img_size, size_max_bg, size_h = size_h, size_max = size_max_bg)
-        self.encoder_app_bg = ImgEncoderwoSN(img_size, size_max_bg, size_h = size_h, size_max = size_max_bg)
-        self.actvn = nn.ReLU()        
-
-        self.out_shape_obj = (nn.Linear(size_max, z_dim))
-        self.out_z_app_obj = (nn.Linear(size_max, z_dim))
-        self.out_z_shape_bg = (nn.Linear(size_max_bg, z_dim_bg))
-        self.out_z_app_bg = (nn.Linear(size_max_bg, z_dim_bg))
-
-    def forward(self, x, batch_size):
-        z_shape_obj = self.actvn((self.encoder_shape_obj(x)))
-        z_app_obj = self.actvn((self.encoder_app_obj(x)))
-        z_shape_bg = self.actvn((self.encoder_shape_bg(x)))
-        z_app_bg = self.actvn((self.encoder_app_bg(x)))
-
-        z_shape_obj = self.out_shape_obj(z_shape_obj).reshape(batch_size,1,self.z_dim)
-        z_app_obj = self.out_z_app_obj(z_app_obj).reshape(batch_size,1, self.z_dim)
-        z_shape_bg = self.out_z_shape_bg(z_shape_bg)
-        z_app_bg = self.out_z_app_bg(z_app_bg)
-
-        latents = (z_shape_obj, z_app_obj,z_shape_bg,z_app_bg )
-
-        return latents
-
-'''
 
 class Identifier(nn.Module):
     def __init__(self, img_size, z_dim=128, z_dim_bg = 128, size_h = 32, size_max = 1024,  batch_size = 32):
