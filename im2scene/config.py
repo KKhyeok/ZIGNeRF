@@ -1,13 +1,12 @@
 import yaml
 from im2scene import data
-from im2scene import gan2d, giraffe
+from im2scene import giraffe
 import logging
 import os
 
 
 # method directory; for this project we only use giraffe
 method_dict = {
-    'gan2d': gan2d,
     'giraffe': giraffe,
 }
 
