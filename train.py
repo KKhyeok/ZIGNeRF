@@ -144,15 +144,8 @@ t0b = time.time()
 
 vis_cond_flag = 0
 while (True):
-    epoch_it += 1 
-    opti_iter =0
+    epoch_it += 1
     for batch in train_loader:
-
-        trainer.optimization(batch, opti_iter)
-        opti_iter += 1
-        if opti_iter >= 9999:
-            break
-        continue
 
         it += 1
         loss = trainer.train_step(batch, it)
