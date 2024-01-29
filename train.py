@@ -219,4 +219,3 @@ while (True):
             checkpoint_io.save('model.pt', epoch_it=epoch_it, it=it,
                                loss_val_best=metric_val_best)
             exit(3)
-    break
